@@ -8,12 +8,19 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import axios from "axios";
+import { installDemoBackend } from "./demo/demoBackend";
 
 
 // axios.defaults.baseURL = 'http://localhost:3001';
 axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('user');
 
-axios.defaults.baseURL = 'https://streetartwineclub-backend-production.up.railway.app';
+// The original backend (Railway) and its seed source were free tiers that
+// expired. To keep this portfolio demo fully working (catalog, filters,
+// sorting, search, product detail, cart) we serve a static catalog through a
+// client-side axios adapter. The full backend code remains in the
+// StreetArt_Wine_Club_BackEnd repository.
+axios.defaults.baseURL = '';
+installDemoBackend(axios);
 
 const domain = "dev-6ttpzvp7k3ijg0l6.us.auth0.com"
 const clientId = "aAnP8ywOwAijCGOi8OsIKdidjFMdoeHl"
